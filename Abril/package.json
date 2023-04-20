@@ -1,0 +1,15 @@
+{
+  "name": "herramientas-testing",
+  "version": "1.0.0",
+  "description": "ProyTDD",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Tiburcio lopez",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  }
+}
