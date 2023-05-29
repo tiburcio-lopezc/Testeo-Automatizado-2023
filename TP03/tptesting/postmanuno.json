@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "f5f331ef-df22-4e27-ae3c-59866fbaecbc",
+		"name": "Testeo Automatizado TP03",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24018958"
+	},
+	"item": [
+		{
+			"name": "GET TEST STATUS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body posee string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"fugiat\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type esta presente en header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.variables.get(\"URL\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{myUrl}}/todos/3",
+					"protocol": "https",
+					"host": [
+						"{{myUrl}}"
+					],
+					"path": [
+						"todos",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado Http es 200 o 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201])\r",
+							"});\r",
+							"pm.test(\"POST request exitoso\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"pm.test(\"Body tiene un string X\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include([\"PRACTICO\"]);\r",
+							"});\r",
+							"pm.test(\"Tiempo de respuesta es inferior a 800milisegundos\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(800);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"title\": \"TRABAJO\",\r\n    \"body\": \"PRACTICO\",\r\n    \"userId\": 3}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{myUrl}}/posts",
+					"protocol": "https",
+					"host": [
+						"{{myUrl}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
